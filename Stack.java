@@ -1,10 +1,10 @@
 import java.util.Vector;
 
-public class MyStack<Integer> implements ADTStack<Integer> {
+public class Stack<Integer> implements ADTStack<Integer> {
 	
 	private Vector <Integer> myVec;
 	
-	public MyStack() {
+	public Stack() {
 		this.myVec = new Vector <Integer>();	
 		myVec.clear();
 	}

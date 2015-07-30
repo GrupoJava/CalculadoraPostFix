@@ -25,7 +25,7 @@ public class InterfazGrafica {
 		private JTextField textField;
 		private JFileChooser fc;
 		private File file;
-		private Calculadora calculadora;
+		private Calculadora<Integer> calculadora = new Calculadora<Integer>();
 		private JButton btnSeleccionarArchivo;
 		private JButton buttonCalcular;
 		private JTextArea textArea;
@@ -68,6 +68,7 @@ public class InterfazGrafica {
 			
 			buttonCalcular = new JButton("Calcular");
 			buttonCalcular.setBounds(20, 164, 174, 23);
+			buttonCalcular.addActionListener(new Evento());
 			frame.getContentPane().add(buttonCalcular);
 			
 			JLabel lblResultados = new JLabel("Resultados:");
@@ -93,18 +94,19 @@ public class InterfazGrafica {
 			 */
 			public void actionPerformed(ActionEvent a) {
 			
-				if(a.equals(btnSeleccionarArchivo)){
+				if(a.getSource()==btnSeleccionarArchivo){
 					int returnVal = fc.showOpenDialog(frame);
 			        if (returnVal == JFileChooser.APPROVE_OPTION) {
+			        	System.out.println("Seleccion");
 			            file = fc.getSelectedFile();
 			            textField.setText(file.getAbsolutePath());
 			        } 
 				}else{
 					try {
 						calculadora.readFile(file.getAbsolutePath());
-						textArea.setText((String) calculadora.calcular());
-					} catch (FileNotFoundException e) {
-					
+						textArea.setText(String.valueOf("El resultado final de su operacion es: " +calculadora.calcular()));
+					} catch ( Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
