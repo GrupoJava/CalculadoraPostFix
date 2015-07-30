@@ -19,6 +19,8 @@ public class Calculadora implements ADTCalculadora{
 		MySta = new MyStack<Integer>();	
 	}
 
+	private String operacion;
+
 	@Override
 	public void readFile(String file) throws FileNotFoundException {
 		File archivo = new File(file);
@@ -27,13 +29,13 @@ public class Calculadora implements ADTCalculadora{
 	        StringBuilder sb = new StringBuilder();
 	        try {
 				while ((line = br.readLine()) != null) {
-				    sb.append(line);
-				    sb.append("\n");
+					sb.append(line);
+				    //sb.append("\n");
 				}
 			} catch (IOException e) {
 				
 			}
-	        String text = sb.toString();
+	        operacion = sb.toString();
 
 	}
 
