@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -24,8 +25,10 @@ public class InterfazGrafica {
 		private JTextField textField;
 		private JFileChooser fc;
 		private File file;
+		private Calculadora calculadora;
 		private JButton btnSeleccionarArchivo;
 		private JButton buttonCalcular;
+		private JTextArea textArea;
 		public static void main(String[] args) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -71,7 +74,7 @@ public class InterfazGrafica {
 			lblResultados.setBounds(20, 199, 100, 21);
 			frame.getContentPane().add(lblResultados);
 			
-			JTextArea textArea = new JTextArea();
+			textArea = new JTextArea();
 			textArea.setBounds(20, 218, 378, 113);
 			frame.getContentPane().add(textArea);
 			
@@ -89,14 +92,21 @@ public class InterfazGrafica {
 			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent a) {
-				int returnVal = fc.showOpenDialog(frame);
-				
-		        if (returnVal == JFileChooser.APPROVE_OPTION) {
-		            file = fc.getSelectedFile();
-		            textField.setText(file.getAbsolutePath());
-		        } else {
-		            
-		        }
+			
+				if(a.equals(btnSeleccionarArchivo)){
+					int returnVal = fc.showOpenDialog(frame);
+			        if (returnVal == JFileChooser.APPROVE_OPTION) {
+			            file = fc.getSelectedFile();
+			            textField.setText(file.getAbsolutePath());
+			        } 
+				}else{
+					try {
+						calculadora.readFile(file.getAbsolutePath());
+						textArea.setText((String) calculadora.calcular());
+					} catch (FileNotFoundException e) {
+					
+					}
+				}
 			}
 		}
 }
