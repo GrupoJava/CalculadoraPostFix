@@ -1,8 +1,27 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructura de Datos
+ * Sección: 10
+ * 30/07/2015
+ * Hoja de Trabajo 2
+ *
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 
+
+/**
+ *Esta clase <StackTest> permite realizar pruebas con JUnit
+ * para comprobar que los métodos de Stack funcionen de manera correcta
+ * 
+ * @author André Rodas
+ * @author Rudy Garrido 
+ * @author Yosemite Meléndez
+ *
+ */
 public class StackTest {
 
 	@Test
