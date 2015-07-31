@@ -1,9 +1,42 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructura de Datos
+ * Sección: 10
+ * 30/07/2015
+ * Hoja de Trabajo 2
+ *
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * La clase <Calculadora> implementa la interfaz <ADTCalculadora>. 
+ * Reciben archivos tipo String. Con esta clase se puede recibir un
+ * archivo y leerlo. Lanza errores sino se encuentra el archivo o es
+ * inaccesible. Luego de leerlo analiza los datos que trae. Los convierte 
+ * a una cadea de caracteres sin espacios. Estos caracteres son analizados
+ * para realizar una operación con notación Postfix. Lo que hace es un push
+ * a los dos operandos en una pila y luego utiliza esos valores para operarlos
+ * dependiendo el operador que esté en la cadena y dependiendo su jerarquía.
+ * 
+ * En esta clase se utilizan los siguietnes atributos:
+ * <MyStr>: para unir la cadena de caracteres
+ * <MySta>: una nueva Pila.
+ * <op1>: el primer operando
+ * <op2>: el segundo operando
+ * <res>: el resultado de la operacion
+ * <numeros>: los números que deben estar contenidos en la cadena de caracteres
+ * 
+ * @author André Rodas
+ * @author Rudy Garrido 
+ * @author Yosemite Meléndez
+ *
+ * @param <P> para tipo de datos String.
+ */
 public class Calculadora<P> implements ADTCalculadora<P>{
 	private String MyStr;
 	private Stack<Integer> MySta;
@@ -12,6 +45,14 @@ public class Calculadora<P> implements ADTCalculadora<P>{
 	private Integer res;
 	final String numeros = "123456789";
 	
+	/**
+	 * Este es el constructor de la Clase. Crea cuatro objetos que son
+	 * <MyStr>: para unir la cadena de caracteres, inicia vacío
+	 * <op1>: el primer operando, inicia en cero
+	 * <op2>: el segundo operando, inicia en cero
+	 * <MySta>: una nueva Pila, tipo Stack
+	 * 
+	 */
 	public Calculadora() {
 		MyStr = "";		
 		op1 = 0;
